@@ -10,9 +10,11 @@ import com.valentin.data.data.storage.room.RoomMedicineStorage
 import com.valentin.domain.model.Medicine
 import com.valentin.domain.usecases.SaveMedicineUseCase
 import com.valentin.mymedicines.data.repository.MedicineRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class EditFrViewModel(
-//    private val
+@HiltViewModel
+class EditFrViewModel @Inject constructor(
     private val saveMedicineUseCase: SaveMedicineUseCase
 ) : ViewModel() {
 
@@ -23,20 +25,7 @@ class EditFrViewModel(
 
     suspend fun save(newMedicine: Medicine) {
         saveMedicineUseCase.execute(medicine = newMedicine)
-        nameMedLiveDataMutable.value = newMedicine.name
-        dateMedLiveDataMutable.value = newMedicine.date
-    }
-
-    companion object {
-        val Factory: ViewModelProvider.Factory = viewModelFactory {
-            initializer {
-                val storage = RoomMedicineStorage(context = )
-                val repository = MedicineRepository(storage = storage)
-                val saveMedicineUseCase = SaveMedicineUseCase(repository = repository)
-                EditFrViewModel(
-                    saveMedicineUseCase = saveMedicineUseCase
-                )
-            }
-        }
+        nameMedLiveDataMutable.postValue(newMedicine.name)
+        dateMedLiveDataMutable.postValue(newMedicine.date)
     }
 }
