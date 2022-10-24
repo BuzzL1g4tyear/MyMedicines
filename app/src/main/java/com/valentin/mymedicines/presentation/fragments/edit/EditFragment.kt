@@ -1,7 +1,11 @@
 package com.valentin.mymedicines.presentation.fragments.edit
 
+import android.content.Context
+import android.os.Bundle
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.google.android.material.transition.platform.MaterialContainerTransform
+import com.google.android.material.transition.platform.MaterialElevationScale
 import com.valentin.domain.model.Medicine
 import com.valentin.mymedicines.R
 import com.valentin.mymedicines.databinding.FragmentEditBinding
@@ -17,6 +21,11 @@ class EditFragment : BaseFragment<FragmentEditBinding>(R.layout.fragment_edit) {
     override val binding: FragmentEditBinding by viewBinding()
 
     private val editFrViewModel: EditFrViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        sharedElementEnterTransition = MaterialContainerTransform()
+    }
 
     override fun onStart() {
         super.onStart()
@@ -34,8 +43,7 @@ class EditFragment : BaseFragment<FragmentEditBinding>(R.layout.fragment_edit) {
             val dateMedicine = binding.dateMedicine.text.toString()
 
             val newMedicine = Medicine(
-                name = nameMedicine,
-                date = dateMedicine
+                name = nameMedicine, date = dateMedicine
             )
 
             CoroutineScope(Dispatchers.IO).launch {
