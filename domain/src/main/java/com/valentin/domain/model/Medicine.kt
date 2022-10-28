@@ -2,5 +2,6 @@ package com.valentin.domain.model
 
 data class Medicine(
     var name: String,
-    var date: String
-)
+    var date: String,
+    var isLiked: Boolean = false
+) : Item

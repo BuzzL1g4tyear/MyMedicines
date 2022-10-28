@@ -3,13 +3,8 @@ package com.valentin.mymedicines.presentation.fragments.edit
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewmodel.initializer
-import androidx.lifecycle.viewmodel.viewModelFactory
-import com.valentin.data.data.storage.room.RoomMedicineStorage
 import com.valentin.domain.model.Medicine
 import com.valentin.domain.usecases.SaveMedicineUseCase
-import com.valentin.mymedicines.data.repository.MedicineRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

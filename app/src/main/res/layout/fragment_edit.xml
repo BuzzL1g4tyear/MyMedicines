@@ -5,7 +5,6 @@
     android:id="@+id/fragment_edit"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#07FF30"
     android:transitionGroup="true"
     android:transitionName="shared_container"
     tools:context=".presentation.fragments.edit.EditFragment">
