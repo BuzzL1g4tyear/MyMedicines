@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class MedicineEntity(
-    @PrimaryKey(autoGenerate = true) val uid: Int = 0,
+    @PrimaryKey(autoGenerate = true) var uid: Int = 0,
     @ColumnInfo(name = "name") var name: String,
     @ColumnInfo(name = "date") var date: String
 )

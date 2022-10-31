@@ -8,4 +8,7 @@ interface MedicineRepositoryInterface {
 
     suspend fun getMedicine(): List<Medicine>
 
+    suspend fun updateMedicine(medicine: Medicine)
+
+    suspend fun deleteMedicine(medicine: Medicine)
 }

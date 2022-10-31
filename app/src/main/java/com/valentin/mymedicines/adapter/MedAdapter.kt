@@ -9,12 +9,17 @@ import com.valentin.domain.model.Medicine
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
-class MedAdapter @Inject constructor(
+class MedAdapter(
     private val meds: List<ItemMed<*, *>>,
 ) : ListAdapter<Item, BaseViewHolder<ViewBinding, Item>>(
     MedDiffUtil(meds)
 ) {
+
+    var callback: BaseAdapterCallback<Item>? = null
+
+    fun attachCallback(callback: BaseAdapterCallback<Item>) {
+        this.callback = callback
+    }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -29,6 +34,9 @@ class MedAdapter @Inject constructor(
 
     override fun onBindViewHolder(holder: BaseViewHolder<ViewBinding, Item>, position: Int) {
         holder.onBind(currentList[position])
+        holder.itemView.setOnClickListener {
+            callback?.onItemClick(currentList[position], holder.itemView)
+        }
     }
 
     override fun onBindViewHolder(

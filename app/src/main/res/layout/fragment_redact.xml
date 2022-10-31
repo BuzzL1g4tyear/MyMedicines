@@ -1,34 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/fragment_edit"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:transitionName="shared_element_container"
-    tools:context=".presentation.fragments.edit.EditFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.redact.RedactFragment">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/nameMedicineTextInputLayout"
+        android:id="@+id/redactNameMedicineTextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:hint="@string/label_edit_fragment_name"
-        app:layout_constraintBottom_toTopOf="@id/dateMedicineTextInputLayout"
+        app:layout_constraintBottom_toTopOf="@id/redactDateMedicineTextInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/nameMedicine"
+            android:id="@+id/redactNameMedicine"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/dateMedicineTextInputLayout"
+        android:id="@+id/redactDateMedicineTextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -36,17 +34,17 @@
         android:hint="@string/label_edit_fragment_Date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nameMedicineTextInputLayout">
+        app:layout_constraintTop_toBottomOf="@id/redactNameMedicineTextInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/dateMedicine"
+            android:id="@+id/redactDateMedicine"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/FAB_confirm_new_medicine"
+        android:id="@+id/FAB_confirm_redact_medicine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
@@ -56,5 +54,6 @@
         android:contentDescription="@string/fab_content_desc"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_done" />
+        app:srcCompat="@drawable/ic_create" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

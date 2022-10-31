@@ -9,7 +9,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class EditFrViewModel @Inject constructor(
+class EditViewModel @Inject constructor(
     private val saveMedicineUseCase: SaveMedicineUseCase
 ) : ViewModel() {
 

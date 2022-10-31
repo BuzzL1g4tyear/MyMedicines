@@ -6,20 +6,25 @@ import com.valentin.domain.model.Medicine
 import com.valentin.mymedicines.data.entity.MedicineEntity
 
 class MedicineRepository(private val storage: MedicineStorage) : MedicineRepositoryInterface {
-    override suspend fun saveMedicine(medicine: Medicine) {
-
-        val medToStorage = toStorage(medicine)
-
-        storage.insert(medToStorage)
-    }
 
     override suspend fun getMedicine(): List<Medicine> {
-        val medToDomain = storage.get()
-        return toDomain(medToDomain)
+        return toDomain(storage.get())
+    }
+
+    override suspend fun saveMedicine(medicine: Medicine) {
+        storage.insert(toStorage(medicine))
+    }
+
+    override suspend fun updateMedicine(medicine: Medicine) {
+        storage.update(toStorage(medicine = medicine))
+    }
+
+    override suspend fun deleteMedicine(medicine: Medicine) {
+        storage.delete(toStorage(medicine = medicine))
     }
 
     private fun toStorage(medicine: Medicine): MedicineEntity {
-        return MedicineEntity(name = medicine.name, date = medicine.date)
+        return MedicineEntity(uid = medicine.id, name = medicine.name, date = medicine.date)
     }
 
     private fun toDomain(medicineList: List<MedicineEntity>): List<Medicine> {
@@ -28,6 +33,7 @@ class MedicineRepository(private val storage: MedicineStorage) : MedicineReposit
 
         for (med in medicineList) {
             val medicine = Medicine(
+                id = med.uid,
                 name = med.name,
                 date = med.date
             )

@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_mainFragment_to_editFragment"
             app:destination="@id/editFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_redactFragment"
+            app:destination="@id/redactFragment" />
     </fragment>
 
     <fragment
@@ -23,6 +26,15 @@
 
         <action
             android:id="@+id/action_editFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/redactFragment"
+        android:name="com.valentin.mymedicines.presentation.redact.RedactFragment"
+        android:label="fragment_redact"
+        tools:layout="@layout/fragment_redact" >
+        <action
+            android:id="@+id/action_redactFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
 

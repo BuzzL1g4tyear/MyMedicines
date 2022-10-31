@@ -1,11 +1,9 @@
 package com.valentin.mymedicines.presentation.fragments.edit
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.transition.platform.MaterialContainerTransform
-import com.google.android.material.transition.platform.MaterialElevationScale
 import com.valentin.domain.model.Medicine
 import com.valentin.mymedicines.R
 import com.valentin.mymedicines.databinding.FragmentEditBinding
@@ -19,8 +17,7 @@ import kotlinx.coroutines.launch
 class EditFragment : BaseFragment<FragmentEditBinding>(R.layout.fragment_edit) {
 
     override val binding: FragmentEditBinding by viewBinding()
-
-    private val editFrViewModel: EditFrViewModel by viewModels()
+    private val editViewModel: EditViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,10 +27,10 @@ class EditFragment : BaseFragment<FragmentEditBinding>(R.layout.fragment_edit) {
     override fun onStart() {
         super.onStart()
 
-        editFrViewModel.nameMedLiveData.observe(this) {
+        editViewModel.nameMedLiveData.observe(this) {
             binding.nameMedicine.setText(it)
         }
-        editFrViewModel.dateMedLiveData.observe(this) {
+        editViewModel.dateMedLiveData.observe(this) {
             binding.dateMedicine.setText(it)
         }
 
@@ -42,12 +39,11 @@ class EditFragment : BaseFragment<FragmentEditBinding>(R.layout.fragment_edit) {
             val nameMedicine = binding.nameMedicine.text.toString()
             val dateMedicine = binding.dateMedicine.text.toString()
 
-            val newMedicine = Medicine(
-                name = nameMedicine, date = dateMedicine
-            )
-
             CoroutineScope(Dispatchers.IO).launch {
-                editFrViewModel.save(newMedicine = newMedicine)
+                val newMedicine = Medicine(
+                    name = nameMedicine, date = dateMedicine
+                )
+                editViewModel.save(newMedicine = newMedicine)
             }
         }
     }
