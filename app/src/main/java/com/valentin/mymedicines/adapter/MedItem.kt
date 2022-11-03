@@ -19,7 +19,7 @@ class MedItem : ItemMed<LayoutMedicineBinding, Medicine> {
         parent: ViewGroup
     ): BaseViewHolder<LayoutMedicineBinding, Medicine> {
         val binding = LayoutMedicineBinding.inflate(layoutInflater, parent, false)
-        return TitleViewHolder(binding)
+        return MedViewHolder(binding)
     }
 
     override fun getDiffUtil() = diffUtil
@@ -38,7 +38,7 @@ class MedItem : ItemMed<LayoutMedicineBinding, Medicine> {
 
 }
 
-class TitleViewHolder(
+class MedViewHolder(
     binding: LayoutMedicineBinding
 ) : BaseViewHolder<LayoutMedicineBinding, Medicine>(binding) {
 

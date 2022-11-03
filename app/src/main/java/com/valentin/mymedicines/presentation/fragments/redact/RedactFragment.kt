@@ -1,4 +1,4 @@
-package com.valentin.mymedicines.presentation.redact
+package com.valentin.mymedicines.presentation.fragments.redact
 
 import android.os.Bundle
 import android.view.View

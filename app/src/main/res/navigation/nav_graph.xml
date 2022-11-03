@@ -30,7 +30,7 @@
     </fragment>
     <fragment
         android:id="@+id/redactFragment"
-        android:name="com.valentin.mymedicines.presentation.redact.RedactFragment"
+        android:name="com.valentin.mymedicines.presentation.fragments.redact.RedactFragment"
         android:label="fragment_redact"
         tools:layout="@layout/fragment_redact" >
         <action

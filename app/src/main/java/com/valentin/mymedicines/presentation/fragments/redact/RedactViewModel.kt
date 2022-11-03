@@ -1,4 +1,4 @@
-package com.valentin.mymedicines.presentation.redact
+package com.valentin.mymedicines.presentation.fragments.redact
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
