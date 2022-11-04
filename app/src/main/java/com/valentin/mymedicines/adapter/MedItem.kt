@@ -26,7 +26,7 @@ class MedItem : ItemMed<LayoutMedicineBinding, Medicine> {
 
     private val diffUtil = object : DiffUtil.ItemCallback<Medicine>() {
         override fun areItemsTheSame(oldItem: Medicine, newItem: Medicine) =
-            oldItem.name == newItem.name
+            oldItem.name == newItem.name && oldItem.date == newItem.date
 
         override fun areContentsTheSame(oldItem: Medicine, newItem: Medicine) = oldItem == newItem
 
