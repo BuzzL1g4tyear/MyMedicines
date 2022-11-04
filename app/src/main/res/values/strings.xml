@@ -3,5 +3,7 @@
     <string name="fab_content_desc">New Medicine</string>
     <string name="label_edit_fragment_name">Name medicine</string>
     <string name="label_edit_fragment_Date">Date medicine</string>
+    <string name="snack_description">was deleted</string>
+    <string name="snack_undo">Undo</string>
 
 </resources>

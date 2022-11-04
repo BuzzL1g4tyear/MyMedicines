@@ -66,8 +66,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
                 model as Medicine
                 replaceFragment(RedactFragment(medicine = model))
             }
-        }
-        )
+        })
     }
 
     private fun getMedicines() = listOf(
@@ -98,10 +97,14 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
     }
 
     private fun showRestoreItemSnackBar(position: Int, item: Item) {
-        Snackbar.make(binding.recyclerView, "Item was deleted", Snackbar.LENGTH_LONG)
-            .setAction("Undo") {
-                list.add(position, item)
-                adapter.submitList(list.toList())
-            }.show()
+        item as Medicine
+        Snackbar.make(
+            binding.recyclerView,
+            "${item.name} ${requireContext().resources.getString(R.string.snack_description)}",
+            Snackbar.LENGTH_LONG
+        ).setAction(requireContext().resources.getString(R.string.snack_undo)) {
+            list.add(position, item)
+            adapter.submitList(list.toList())
+        }.show()
     }
 }
