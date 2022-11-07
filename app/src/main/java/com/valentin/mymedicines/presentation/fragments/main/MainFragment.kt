@@ -14,10 +14,12 @@ import com.valentin.mymedicines.R
 import com.valentin.mymedicines.adapter.BaseAdapterCallback
 import com.valentin.mymedicines.adapter.MedAdapter
 import com.valentin.mymedicines.adapter.MedItem
-import com.valentin.mymedicines.adapter.anim.*
+import com.valentin.mymedicines.adapter.anim.AddableItemAnimator
+import com.valentin.mymedicines.adapter.anim.SimpleCommonAnimator
+import com.valentin.mymedicines.adapter.anim.SlideInLeftCommonAnimator
+import com.valentin.mymedicines.adapter.anim.SwipeToDelete
 import com.valentin.mymedicines.databinding.FragmentMainBinding
 import com.valentin.mymedicines.presentation.fragments.baseFragment.BaseFragment
-import com.valentin.mymedicines.presentation.fragments.redact.RedactFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -64,7 +66,10 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
         adapter.attachCallback(object : BaseAdapterCallback<Item> {
             override fun onItemClick(model: Item, view: View) {
                 model as Medicine
-                replaceFragment(RedactFragment(medicine = model))
+                val arg = MainFragmentDirections.actionMainFragmentToRedactFragment(
+                    nameMed = model.name, dateMed = model.date, idMed = model.id.toString()
+                )
+                findNavController().navigate(arg)
             }
         })
     }

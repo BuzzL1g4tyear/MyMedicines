@@ -36,6 +36,15 @@
         <action
             android:id="@+id/action_redactFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+        <argument
+            android:name="nameMed"
+            app:argType="string" />
+        <argument
+            android:name="dateMed"
+            app:argType="string" />
+        <argument
+            android:name="idMed"
+            app:argType="string" />
     </fragment>
 
 </navigation>

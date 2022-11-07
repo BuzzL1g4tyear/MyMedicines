@@ -3,6 +3,7 @@ package com.valentin.mymedicines.presentation.fragments.edit
 import android.os.Bundle
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.transition.platform.MaterialContainerTransform
 import com.valentin.domain.model.Medicine
 import com.valentin.mymedicines.R
@@ -21,6 +22,14 @@ class EditFragment : BaseFragment<FragmentEditBinding>(R.layout.fragment_edit) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+//        val pick = MaterialDatePicker.Builder.datePicker().setTitleText("Select date")
+//            .setInputMode(MaterialDatePicker.INPUT_MODE_TEXT).build()
+//        pick.show(childFragmentManager, "T")
+//        pick.addOnPositiveButtonClickListener {
+//            binding.dateMedicine.setText(pick.selection.toString())
+//        }
+
         sharedElementEnterTransition = MaterialContainerTransform()
     }
 

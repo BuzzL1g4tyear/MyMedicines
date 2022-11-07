@@ -3,6 +3,7 @@ package com.valentin.mymedicines.presentation.fragments.redact
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.valentin.domain.model.Medicine
 import com.valentin.mymedicines.R
@@ -14,16 +15,17 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class RedactFragment(val medicine: Medicine) :
+class RedactFragment :
     BaseFragment<FragmentRedactBinding>(R.layout.fragment_redact) {
 
     override val binding: FragmentRedactBinding by viewBinding()
     private val redactViewModel: RedactViewModel by viewModels()
+    private val args: RedactFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.redactNameMedicine.setText(medicine.name)
-        binding.redactDateMedicine.setText(medicine.date)
+        binding.redactNameMedicine.setText(args.nameMed)
+        binding.redactDateMedicine.setText(args.dateMed)
     }
 
     override fun onStart() {
@@ -34,7 +36,11 @@ class RedactFragment(val medicine: Medicine) :
 
             CoroutineScope(Dispatchers.IO).launch {
 
-                val med = Medicine(id = medicine.id, name = name, date = date)
+                val med = Medicine(
+                    id = args.idMed.toInt(),
+                    name = name,
+                    date = date
+                )
 
                 redactViewModel.update(medicine = med)
             }

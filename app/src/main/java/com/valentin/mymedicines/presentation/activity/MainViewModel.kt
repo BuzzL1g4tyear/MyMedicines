@@ -1,4 +1,4 @@
-package com.valentin.mymedicines.presentation.activitys
+package com.valentin.mymedicines.presentation.activity
 
 import androidx.lifecycle.ViewModel
 
